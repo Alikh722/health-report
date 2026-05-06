@@ -42,7 +42,7 @@
 
     .slide {
       position: absolute; inset: 0;
-      padding: 1.5rem 5% 80px;
+      padding: 1.5rem 5% 90px;
       display: flex; flex-direction: column;
       background: var(--bg-gradient);
       opacity: 0; visibility: hidden;
@@ -53,12 +53,29 @@
     .slide.active { opacity: 1; visibility: visible; z-index: 2; }
 
     /* Headers */
-    .header-box { margin-bottom: 1.5rem; text-align: center; }
+    .header-box { margin-top: auto; margin-bottom: auto; text-align: center; }
     .hero-tag { display: inline-block; padding: 4px 15px; border: 1px solid var(--accent-primary); border-radius: 50px; font-size: 0.8rem; color: var(--accent-primary); margin-bottom: 0.5rem; }
     h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); margin: 0; font-weight: 800; }
-    h2 { font-size: 1.4rem; border-right: 4px solid var(--accent-primary); padding-right: 12px; margin: 1rem 0; }
+    
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 0.8rem;
+    }
+    
+    .slide-header h2 {
+      font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+      margin: 0;
+      border-right: 4px solid var(--accent-primary);
+      padding-right: 12px;
+      font-weight: 700;
+    }
 
-    /* Observations Grid - Professional Layout */
+    /* Observations Grid */
     .obs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -80,14 +97,44 @@
     }
     .obs-item:hover { background: rgba(255,255,255,0.08); }
     .obs-item::before { content: "•"; color: var(--accent-primary); font-weight: 800; }
-    
-    /* Highlight Emergency Exit Error */
-    .exit-err { border-right: 3px solid var(--accent-danger); color: #ffd1d1; }
 
     /* Stats Grid */
     .stats-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 1rem; }
     .stat-card { background: var(--glass-bg); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid var(--glass-border); }
     .stat-card span { display: block; font-size: 2rem; font-weight: 800; }
+
+    /* CSS Simple Chart */
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 20px;
+      border-radius: 18px;
+    }
+    .chart-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .chart-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .chart-bar-bg {
+      background: rgba(255, 255, 255, 0.08);
+      height: 10px;
+      border-radius: 10px;
+      width: 100%;
+      overflow: hidden;
+    }
+    .chart-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+    }
 
     /* Nav Buttons */
     .nav-nav {
@@ -98,10 +145,31 @@
     }
     .n-btn { background: var(--accent-primary); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; }
 
+    /* Badges */
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; }
+    .bg-red { background: rgba(248,113,113,0.2); color: #f87171; border: 1px solid #f87171; }
+    .bg-orange { background: rgba(251,146,60,0.2); color: #fb923c; border: 1px solid #fb923c; }
+
+    /* Tables */
+    .pro-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 8px;
+    }
+    .pro-table th { padding: 12px; text-align: right; color: var(--accent-primary); font-size: 0.9rem; }
+    .pro-table td { background: var(--glass-bg); padding: 12px 15px; font-weight: 500; font-size: 0.9rem; }
+    .pro-table tr td:first-child { border-radius: 0 12px 12px 0; }
+    .pro-table tr td:last-child { border-radius: 12px 0 0 12px; }
+
     @media (max-width: 768px) {
       .obs-grid { grid-template-columns: 1fr; }
-      h1 { font-size: 1.4rem; }
+      h1 { font-size: 1.3rem; }
       .slide { padding-top: 1rem; }
+      .slide-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+      
+      .pro-table thead { display: none; }
+      .pro-table td { display: block; text-align: left; padding: 10px; border-radius: 8px !important; margin-bottom: 5px; }
+      .pro-table td::before { content: attr(data-label); float: right; font-weight: 800; color: var(--accent-primary); }
     }
   </style>
 </head>
@@ -110,35 +178,87 @@
   <div class="progress-bar" id="pBar"></div>
 
   <div class="deck">
-    <!-- Slide 1: Welcome -->
     <section class="slide active">
-      <div class="header-box" style="margin-top:auto; margin-bottom:auto;">
+      <div class="header-box">
         <span class="hero-tag">تقرير التقييم الميداني الكامل 2026</span>
         <h1>تقرير التقييم الداخلي للمراكز الصحية</h1>
-        <p style="color:#9fb6cc;">عرض جميع الملاحظات (79 بنداً) لقطاع الصحة العامة بالرس</p>
+        <p style="color:#9fb6cc; margin-top: 10px;">عرض جميع الملاحظات (118 بنداً) لقطاع الصحة العامة بالرس</p>
       </div>
     </section>
 
-    <!-- Slide 2: Stats -->
     <section class="slide">
-      <h2>الملخص الرقمي للملاحظات</h2>
+      <div class="slide-header">
+        <h2>الملخص الرقمي للملاحظات</h2>
+      </div>
       <div class="stats-container">
-        <div class="stat-card"><span>79</span>إجمالي الملاحظات</div>
-        <div class="stat-card"><span style="color:var(--accent-danger)">30</span>عالية الخطورة</div>
-        <div class="stat-card"><span style="color:var(--accent-warning)">46</span>متوسطة الخطورة</div>
-        <div class="stat-card"><span>5</span>مراكز صحية</div>
+        <div class="stat-card"><span>118</span>إجمالي الملاحظات</div>
+        <div class="stat-card"><span style="color:var(--accent-danger)">40</span>عالية الخطورة</div>
+        <div class="stat-card"><span style="color:var(--accent-warning)">78</span>متوسطة الخطورة</div>
+        <div class="stat-card"><span>8</span>مراكز صحية</div>
       </div>
     </section>
 
-    <!-- Slide 3: Al-Jardhawiyah (13 notes) -->
     <section class="slide">
-      <h2>مركز صحي الجرذاوية (13 ملاحظة)</h2>
+      <div class="slide-header">
+        <h2>مؤشر خطورة الملاحظات بالمراكز</h2>
+        <span style="font-size:0.8rem; color:#9fb6cc;">يعتمد على نوعية المخالفات الحرجة</span>
+      </div>
+      <div class="chart-container">
+        
+        <div class="chart-row">
+          <div class="chart-info"><span>مركز صحي الهمجة</span><span style="color:var(--accent-danger)">حرج جداً (95%)</span></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 95%; background: var(--accent-danger);"></div></div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-info"><span>مركز صحي دخنة</span><span style="color:var(--accent-danger)">حرج جداً (90%)</span></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 90%; background: var(--accent-danger);"></div></div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-info"><span>مركز صحي الخشيبي</span><span style="color:var(--accent-danger)">حرج (85%)</span></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 85%; background: var(--accent-danger);"></div></div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-info"><span>مركز صحي رفائع اللهيب</span><span style="color:var(--accent-danger)">حرج (80%)</span></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 80%; background: var(--accent-danger);"></div></div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-info"><span>مركز صحي الدحلة</span><span style="color:var(--accent-danger)">حرج (75%)</span></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 75%; background: var(--accent-danger);"></div></div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-info"><span>مركز صحي الجرذاوية</span><span style="color:var(--accent-warning)">ضعيف (60%)</span></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 60%; background: var(--accent-warning);"></div></div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-info"><span>مركز صحي الركنة</span><span style="color:var(--accent-warning)">ضعيف (55%)</span></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 55%; background: var(--accent-warning);"></div></div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-info"><span>مركز صحي الشبيكية</span><span style="color:var(--accent-warning)">ضعيف (45%)</span></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 45%; background: var(--accent-warning);"></div></div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-header">
+        <h2>مركز صحي الجرذاوية (13 ملاحظة)</h2>
+        <span class="badge bg-orange">ضعيف</span>
+      </div>
       <div class="obs-grid">
         <div class="obs-item">البطاقات التعريفية للموظفين قديمة</div>
         <div class="obs-item">لا توجد علامة (الجهاز يعمل) على الأجهزة الطبية</div>
         <div class="obs-item">يوجد أثاث رجيع في المركز</div>
         <div class="obs-item">توجد نهايات حادة في الفناء الخارجي</div>
-        <div class="obs-item exit-err">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
         <div class="obs-item">مكيف غرفة النفايات الطبية لا يعمل بشكل صحيح (30 درجة)</div>
         <div class="obs-item">يوجد تخزين خاطئ في المستودع</div>
         <div class="obs-item">لا يوجد فحص يومي لعربة الطوارئ</div>
@@ -150,9 +270,11 @@
       </div>
     </section>
 
-    <!-- Slide 4: Rafa'a Al-Lahib (19 notes) -->
     <section class="slide">
-      <h2>مركز رفائع اللهيب (19 ملاحظة)</h2>
+      <div class="slide-header">
+        <h2>مركز رفائع اللهيب (19 ملاحظة)</h2>
+        <span class="badge bg-red">حرج</span>
+      </div>
       <div class="obs-grid">
         <div class="obs-item">مواقف ذوي الاحتياجات غير كافية أو غير مطابقة</div>
         <div class="obs-item">النظافة الخارجية للمركز دون المستوى</div>
@@ -172,20 +294,22 @@
         <div class="obs-item">لا يتم فحص جهاز الإنذار دورياً</div>
         <div class="obs-item">نقص في اللوحات الإرشادية</div>
         <div class="obs-item">لا توجد علامات توضح مخارج الطوارئ</div>
-        <div class="obs-item exit-err">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
       </div>
     </section>
 
-    <!-- Slide 5: Al-Hamjah (17 notes) -->
     <section class="slide">
-      <h2>مركز صحي الهمجة (17 ملاحظة)</h2>
+      <div class="slide-header">
+        <h2>مركز صحي الهمجة (17 ملاحظة)</h2>
+        <span class="badge bg-red">حرج</span>
+      </div>
       <div class="obs-grid">
         <div class="obs-item">بطاقات الموظفين منتهية</div>
         <div class="obs-item">نقص حاد في الكادر البشري بالمركز</div>
         <div class="obs-item">لا توجد علامة (الجهاز يعمل) على الأجهزة</div>
         <div class="obs-item">بعض الأجهزة الطبية لا تعمل</div>
         <div class="obs-item">يوجد أثاث رجيع في المركز</div>
-        <div class="obs-item exit-err">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
         <div class="obs-item">جميع أجهزة قياس الحرارة في المركز لا تعمل</div>
         <div class="obs-item">لا توجد قائمة مراقبة للأدوية المخدرة</div>
         <div class="obs-item">لم يتم تدوين تواريخ الانتهاء في المستودع</div>
@@ -200,16 +324,18 @@
       </div>
     </section>
 
-    <!-- Slide 6: Al-Ruknah (14 notes) -->
     <section class="slide">
-      <h2>مركز صحي الركنة (14 ملاحظة)</h2>
+      <div class="slide-header">
+        <h2>مركز صحي الركنة (14 ملاحظة)</h2>
+        <span class="badge bg-orange">ضعيف</span>
+      </div>
       <div class="obs-grid">
         <div class="obs-item">بطاقات الموظفين منتهية</div>
         <div class="obs-item">لا توجد علامة (الجهاز يعمل) على الأجهزة</div>
         <div class="obs-item">جهاز العلامات الحيوية لا يعمل</div>
         <div class="obs-item">وجود أسلاك كهربائية مكشوفة (الدينمو)</div>
         <div class="obs-item">توجد نهايات حادة في الفناء الخارجي</div>
-        <div class="obs-item exit-err">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
         <div class="obs-item">تخزين خاطئ للأدوية داخل الكراتين الأصلية</div>
         <div class="obs-item">سياسة الأدوية المتشابهة (LASA) غير مفعلة</div>
         <div class="obs-item">لا توجد قائمة مراقبة للأدوية المخدرة</div>
@@ -221,14 +347,16 @@
       </div>
     </section>
 
-    <!-- Slide 7: Al-Khushaibi (16 notes) -->
     <section class="slide">
-      <h2>مركز صحي الخشيبي (16 ملاحظة)</h2>
+      <div class="slide-header">
+        <h2>مركز صحي الخشيبي (16 ملاحظة)</h2>
+        <span class="badge bg-red">حرج</span>
+      </div>
       <div class="obs-grid">
         <div class="obs-item">بطاقات الموظفين منتهية</div>
         <div class="obs-item">لا توجد علامة (الجهاز يعمل) على الأجهزة</div>
         <div class="obs-item">وجود أسلاك كهربائية مكشوفة في الفناء</div>
-        <div class="obs-item exit-err">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
         <div class="obs-item">لا توجد علامات الخطر البيولوجي على غرفة النفايات</div>
         <div class="obs-item">مكيف غرفة النفايات لا يعمل (35 درجة)</div>
         <div class="obs-item">تخزين خاطئ في المستودع / الملزمة</div>
@@ -243,8 +371,9 @@
         <div class="obs-item">نقص اللوحات الإرشادية</div>
       </div>
     </section>
-        <section class="slide">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
+
+    <section class="slide">
+      <div class="slide-header">
         <h2>مركز صحي دخنة (16 ملاحظة)</h2>
         <span class="badge bg-red">حرج</span>
       </div>
@@ -254,7 +383,7 @@
         <div class="obs-item">بطاقات الموظفين منتهية</div>
         <div class="obs-item">وجود أجهزة طبية لا تعمل (جهاز صدمات)</div>
         <div class="obs-item">وجود أثاث رجيع</div>
-        <div class="obs-item exit-err">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
         <div class="obs-item">وجود تخزين خاطئ في المستودع</div>
         <div class="obs-item">المواد الخطرة لا يتم تخزينها بشكل صحيح</div>
         <div class="obs-item">عربة الطوارئ غير مقفلة</div>
@@ -269,13 +398,13 @@
     </section>
 
     <section class="slide">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div class="slide-header">
         <h2>مركز صحي الدحلة (13 ملاحظة)</h2>
         <span class="badge bg-red">حرج</span>
       </div>
       <div class="obs-grid">
         <div class="obs-item">بطاقات الموظفين منتهية</div>
-        <div class="obs-item exit-err">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
         <div class="obs-item">عدم وجود علامة الخطر البيولوجي على غرفة النفايات الطبية</div>
         <div class="obs-item">المواد الخطرة لا يتم تخزينها بشكل صحيح</div>
         <div class="obs-item">عدم الالتزام بأساسيات مكافحة العدوى</div>
@@ -291,7 +420,7 @@
     </section>
 
     <section class="slide">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div class="slide-header">
         <h2>مركز صحي الشبيكية (10 ملاحظات)</h2>
         <span class="badge bg-orange">ضعيف</span>
       </div>
@@ -299,7 +428,7 @@
         <div class="obs-item">النظافة الخارجية للمركز سيئة</div>
         <div class="obs-item">إنارة المركز الخارجية تحتاج إلى إصلاح</div>
         <div class="obs-item">بطاقات الموظفين منتهية</div>
-        <div class="obs-item exit-err">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
         <div class="obs-item">عدم وجود علامة الخطر البيولوجي على غرفة النفايات</div>
         <div class="obs-item">مكيف غرفة النفايات الطبية درجة حرارته مرتفعة (30 درجة)</div>
         <div class="obs-item">عربة الطوارئ غير مقفلة</div>
@@ -309,11 +438,35 @@
       </div>
     </section>
 
+    <section class="slide">
+      <div class="slide-header">
+        <h2>التقييم العام النهائي للمراكز</h2>
+      </div>
+      <table class="pro-table">
+        <thead>
+          <tr>
+            <th>المركز الصحي</th>
+            <th>مستوى الخطورة</th>
+            <th>الحالة</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="المركز">الجرذاوية</td><td>متوسطة</td><td><span class="badge bg-orange">ضعيف</span></td></tr>
+          <tr><td data-label="المركز">رفائع اللهيب</td><td>عالية</td><td><span class="badge bg-red">حرج</span></td></tr>
+          <tr><td data-label="المركز">الهمجة</td><td>عالية جداً</td><td><span class="badge bg-red">حرج</span></td></tr>
+          <tr><td data-label="المركز">الركنة</td><td>متوسطة</td><td><span class="badge bg-orange">ضعيف</span></td></tr>
+          <tr><td data-label="المركز">الخشيبي</td><td>عالية</td><td><span class="badge bg-red">حرج</span></td></tr>
+          <tr><td data-label="المركز">دخنة</td><td>عالية جداً</td><td><span class="badge bg-red">حرج</span></td></tr>
+          <tr><td data-label="المركز">الدحلة</td><td>عالية</td><td><span class="badge bg-red">حرج</span></td></tr>
+          <tr><td data-label="المركز">الشبيكية</td><td>متوسطة</td><td><span class="badge bg-orange">ضعيف</span></td></tr>
+        </tbody>
+      </table>
+    </section>
   </div>
 
   <nav class="nav-nav">
     <button class="n-btn" onclick="go(-1)">→</button>
-    <div id="page" style="font-weight:bold; min-width:40px; text-align:center;">1 / 7</div>
+    <div id="page" style="font-weight:bold; min-width:40px; text-align:center;">1 / 12</div>
     <button class="n-btn" onclick="go(1)">←</button>
   </nav>
 
