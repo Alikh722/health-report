@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="slides-format" content="viewport">
+<title>تقرير التقييم الداخلي للمراكز الصحية - جميع الملاحظات نصاً</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+@theme {
+  --color-bg: #0f2746;
+  --color-bg-deep: #0b1d35;
+  --color-surface: #17385f;
+  --color-text: #ffffff;
+  --color-text-secondary: #d7e5f2;
+  --color-text-muted: #9fb6cc;
+  --color-accent-1: #14b8a6;
+  --color-accent-2: #38bdf8;
+  --color-accent-3: #1d4ed8;
+  --color-glass-bg: rgba(255,255,255,0.08);
+  --color-glass-border: rgba(255,255,255,0.12);
+  --color-vignette: rgba(0,0,0,0.26);
+  --font-display: 'Noto Kufi Arabic', sans-serif;
+  --font-body: 'Noto Kufi Arabic', sans-serif;
+}
+</style>
+<style>
+:root { --color-bg:#0f2746; --color-text:#fff; --glow-color-rgb:20,184,166; }
+*{box-sizing:border-box} html,body{margin:0;background:var(--color-bg);height:100vh;width:100vw;overflow:hidden} body{font-family:'Noto Kufi Arabic',sans-serif;color:#fff}
+.deck{width:100vw;height:100vh;position:relative} .slide{position:absolute;inset:0;background:linear-gradient(135deg,#0f2746 0%,#12345c 100%);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.97);transition:opacity .55s ease,transform .55s ease;pointer-events:none;overflow:hidden} .slide.active{opacity:1;transform:scale(1);pointer-events:auto}
+.slide>.content{position:relative;z-index:2;width:100%;max-width:1200px;padding:34px 48px}
+.nav-controls{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:100;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);padding:10px 18px;border-radius:40px;border:1px solid rgba(255,255,255,.12)}
+.nav-btn{width:38px;height:38px;border:none;border-radius:50%;background:rgba(255,255,255,.10);color:#fff;font-size:20px;cursor:pointer}
+.slide-dots{display:flex;gap:7px;max-width:420px;flex-wrap:wrap;justify-content:center} .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer} .dot.active{background:#14b8a6;transform:scale(1.25)} .slide-counter{font-size:12px;color:#d7e5f2;min-width:54px;text-align:center}
+.reveal{opacity:0;transform:translateY(18px)} .gradient-mesh{position:absolute;inset:0;z-index:0;overflow:hidden} .blob{position:absolute;border-radius:50%;filter:blur(80px);animation:float 15s ease-in-out infinite} @keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-18px) scale(1.08)}}
+.slide::before{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 20% 20%, rgba(255,255,255,.03), transparent 35%),radial-gradient(circle at 85% 75%, rgba(255,255,255,.02), transparent 30%)}
+.title-wrap,.rtl-block{direction:rtl} .title-wrap{text-align:center} .emoji-hero{font-size:104px;line-height:1;margin-bottom:14px;animation:float2 3.2s ease-in-out infinite} @keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.tag{display:inline-block;background:rgba(20,184,166,.16);border:1px solid rgba(20,184,166,.34);color:#c6fff8;padding:8px 16px;border-radius:999px;font-size:18px;margin-bottom:18px} .main-title{font-size:42px;line-height:1.45;margin:0 0 10px;font-weight:800} .sub-title{font-size:22px;color:#d7e5f2;margin:0}
+.section-title{font-size:30px;margin:0;font-weight:800} .center-title{font-size:28px} .status-line{color:#c6fff8;font-size:16px}
+.mt-5{margin-top:20px} .mt-6{margin-top:24px}
+.metric-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px} .metric-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 12px;text-align:center} .metric-num{font-size:28px;font-weight:800} .metric-label{font-size:13px;color:#d7e5f2;margin-top:6px} .red{color:#f87171} .orange{color:#fb923c} .green{color:#4ade80}
+.summary-note{background:linear-gradient(135deg, rgba(20,184,166,.18), rgba(29,78,216,.16));border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px 22px;font-size:20px;line-height:1.9}
+.two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start} .table-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:18px;padding:10px 14px} .mini-title{font-size:18px;color:#c6fff8;margin-bottom:14px;font-weight:700}
+.chips{display:grid;gap:10px} .chip{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);border-radius:14px;padding:14px 16px;font-size:17px} .chip strong{font-size:20px} .chip em{font-style:normal;color:#c6fff8}
+.center-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.obs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px} .obs-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:14px;padding:12px 14px;font-size:15px;line-height:1.95;min-height:68px;display:flex;align-items:flex-start}
+.eval-table{width:100%;border-collapse:separate;border-spacing:0 10px;font-size:18px} .eval-table.compact{font-size:15px} .eval-table th{text-align:right;color:#c6fff8;padding:0 12px 8px} .eval-table td{background:rgba(255,255,255,.08);padding:12px 12px;border-top:1px solid rgba(255,255,255,.10);border-bottom:1px solid rgba(255,255,255,.10)} .eval-table td:first-child{border-radius:0 12px 12px 0} .eval-table td:last-child{border-radius:12px 0 0 12px}
+.table-pill{display:inline-block;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:800} .table-red{background:#7f1d1d;color:#fecaca} .table-orange{background:#7c2d12;color:#fdba74} .table-green{background:#14532d;color:#bbf7d0}
+@media (max-width: 1280px){ .metric-grid{grid-template-columns:repeat(3,1fr)} .two-col{grid-template-columns:1fr} .obs-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="deck">
+<div class="slide slide-1 active" data-slide="1" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:420px;height:420px;top:-110px;left:-110px;background:#14b8a6;opacity:.12"></div><div class="blob" style="width:300px;height:300px;bottom:-80px;right:-50px;background:#1d4ed8;opacity:.10"></div><div class="blob" style="width:220px;height:220px;top:42%;right:20%;background:#0ea5e9;opacity:.08"></div></div>
+  <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1"></canvas>
+  <div class="content title-wrap">
+    <div class="emoji-hero reveal">🏥</div>
+    <div class="tag reveal">قطاع الصحة العامة بالرس</div>
+    <h1 class="main-title reveal">تقرير التقييم الداخلي للمراكز الصحية</h1>
+    <p class="sub-title reveal">نسخة تفصيلية تعرض جميع الملاحظات نصاً — 2026</p>
+  </div>
+</div>
+
+
+<div class="slide slide-2" data-slide="2" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:360px;height:360px;top:-90px;right:-70px;background:#14b8a6;opacity:.09"></div><div class="blob" style="width:260px;height:260px;bottom:-70px;left:-50px;background:#1d4ed8;opacity:.07"></div></div>
+  <div class="content rtl-block">
+    <h2 class="section-title reveal">ملخص العدّ والحصر</h2>
+    <div class="metric-grid mt-6">
+      <div class="metric-card reveal"><div class="metric-num">5</div><div class="metric-label">إجمالي المراكز</div></div>
+      <div class="metric-card reveal"><div class="metric-num">79</div><div class="metric-label">جميع البنود الواردة</div></div>
+      <div class="metric-card reveal"><div class="metric-num">78</div><div class="metric-label">غير المطابق</div></div>
+      <div class="metric-card reveal"><div class="metric-num red">38.5%</div><div class="metric-label">عالية الخطورة</div></div>
+      <div class="metric-card reveal"><div class="metric-num orange">59.0%</div><div class="metric-label">متوسطة</div></div>
+      <div class="metric-card reveal"><div class="metric-num green">2.6%</div><div class="metric-label">منخفضة</div></div>
+    </div>
+    <div class="summary-note reveal mt-6">تحتوي الشرائح التالية على جميع الملاحظات التي أُرسلت سابقاً بصياغتها النصية، بما فيها بند المطابقة الوحيد في الجرذاوية، ومن دون إدراج أي توصيات.</div>
+  </div>
+</div>
+
+
+<div class="slide slide-3" data-slide="3" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:320px;height:320px;top:-70px;left:-70px;background:#0ea5e9;opacity:.08"></div><div class="blob" style="width:240px;height:240px;bottom:-50px;right:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <h2 class="section-title reveal">توزيع البنود والملاحظات</h2>
+    <div class="two-col mt-5">
+      <div class="table-card reveal">
+        <table class="eval-table compact"><thead><tr><th>المركز</th><th>جميع البنود</th><th>غير المطابق</th><th>الحصة</th></tr></thead><tbody><tr class="reveal"><td>مركز صحي الجرذاوية</td><td>13</td><td>12</td><td>15.4%</td></tr><tr class="reveal"><td>مركز صحي رفائع اللهيب</td><td>19</td><td>19</td><td>24.4%</td></tr><tr class="reveal"><td>مركز صحي الهمجة</td><td>17</td><td>17</td><td>21.8%</td></tr><tr class="reveal"><td>مركز صحي الركنة</td><td>14</td><td>14</td><td>17.9%</td></tr><tr class="reveal"><td>مركز صحي الخشيبي</td><td>16</td><td>16</td><td>20.5%</td></tr></tbody></table>
+      </div>
+      <div>
+        <div class="mini-title reveal">تصنيف غير المطابق</div>
+        <div class="chips"><div class="chip reveal"><span>التشغيل والصيانة</span><strong>27</strong><em>34.6%</em></div><div class="chip reveal"><span>السلامة</span><strong>23</strong><em>29.5%</em></div><div class="chip reveal"><span>مكافحة العدوى</span><strong>13</strong><em>16.7%</em></div><div class="chip reveal"><span>الأدوية</span><strong>11</strong><em>14.1%</em></div><div class="chip reveal"><span>تجربة المريض</span><strong>4</strong><em>5.1%</em></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="slide slide-4" data-slide="4" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي الجرذاوية</h2>
+      <div class="status-line">الجزء 1 من 2 — 9 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">البطاقات التعريفية للموظفين قديمة</div><div class="obs-item reveal">لا توجد علامة( الجهاز يعمل ) على الأجهزة الطبية</div><div class="obs-item reveal">يوجد أثاث رجيع في المركز</div><div class="obs-item reveal">توجد نهايات حادة في الفناء الخارجي</div><div class="obs-item reveal">مخارج الطوارى مطابقة للمواصفات</div><div class="obs-item reveal">مكيف غرفة النفايات الطبية لا يعمل بشكل صحيح درجة الحرارة 30</div><div class="obs-item reveal">يوجد تخزين خاطى في المستودع</div><div class="obs-item reveal">لا يوجد فحص يومي لعربة الطوارى</div><div class="obs-item reveal">لا توجد علامات توضح تاريخ الفتح للأدوية متعددة الاستخدام</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-5" data-slide="5" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي الجرذاوية</h2>
+      <div class="status-line">الجزء 2 من 2 — 4 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">لا يوجد التزام بسياسات مكافحة العدوى</div><div class="obs-item reveal">لا توجد أدوات الوقاية الشخصية في جميع العيادات</div><div class="obs-item reveal">يوجد تصدعات في المبنى</div><div class="obs-item reveal">يوجد جل ( سونار )  منتهي الصلاحية</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-6" data-slide="6" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي رفائع اللهيب</h2>
+      <div class="status-line">الجزء 1 من 3 — 9 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">المواقف الخارجيه لذوي الاحتياجات غير كافية او غير مطابقة</div><div class="obs-item reveal">النظافة الخارجية للمركز دون المستوى</div><div class="obs-item reveal">بطاقات الموظفين منتهية</div><div class="obs-item reveal">لا توجد علامة( الجهاز يعمل ) على الأجهزة الطبية</div><div class="obs-item reveal">لا توجد حواجز جانية لذوي الاحتياجات الخاصة في المدخل</div><div class="obs-item reveal">يوجد تخزين خاطى في المستودع</div><div class="obs-item reveal">المواد الخطرة لا يتم عزلها بشكل صحيح</div><div class="obs-item reveal">لا يتم تطبيق سياسة الأدوية المتشابهه بالنطق واللفظ في الصيدلية</div><div class="obs-item reveal">لا توجد قائمة بانتهاء صلاحية الأدوية</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-7" data-slide="7" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي رفائع اللهيب</h2>
+      <div class="status-line">الجزء 2 من 3 — 9 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">لا توجد قائمة مراقبة للأدوية المخدرة بشكل يومي</div><div class="obs-item reveal">لا يتم الالتزام بأساسات مكافحة العدوى لا</div><div class="obs-item reveal">دورة مياة ذوي الاحتياجات الخاصة غير مطابقة للمواصفات</div><div class="obs-item reveal">لا توجد أدوات الوقاية الشخصية في جميع العيادات</div><div class="obs-item reveal">لا يتم الحفاظ على خصوصية المريض في جميع المحاطات</div><div class="obs-item reveal">لا يتم فحص طفايات الحريق بشكل دوري</div><div class="obs-item reveal">لا يتم فحص جهاز الإنذار من الحريق بشكل دوري</div><div class="obs-item reveal">لا توجد لوحات إرشادية كافية</div><div class="obs-item reveal">لا توجد علامات توضح مخارج الطوارى</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-8" data-slide="8" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي رفائع اللهيب</h2>
+      <div class="status-line">الجزء 3 من 3 — 1 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">مخارج الطوارى غير مطابقة للمواصفات</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-9" data-slide="9" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي الهمجة</h2>
+      <div class="status-line">الجزء 1 من 2 — 9 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">بطاقات الموظفين منتهية</div><div class="obs-item reveal">لا يوجد موظفين في المركز</div><div class="obs-item reveal">لا توجد علامة( الجهاز يعمل ) على الأجهزة الطبية</div><div class="obs-item reveal">بعض الأجهزة الطبية لا تعمل</div><div class="obs-item reveal">يوجد أثاث رجيع في المركز</div><div class="obs-item reveal">مخارج الطوارى غير مطابقة</div><div class="obs-item reveal">جميع اجهزة قياس الحرارة في المركز لا تعمل</div><div class="obs-item reveal">لا توجد قائمة مراقبة للأدوية المخدرة بشكل يومي</div><div class="obs-item reveal">لم يتم تدوين تواريخ الانتهاء في المستودع</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-10" data-slide="10" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي الهمجة</h2>
+      <div class="status-line">الجزء 2 من 2 — 8 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">عربة الطوارى غير مقفلة</div><div class="obs-item reveal">لا يوجد فحص يومي لعربة الطوارى</div><div class="obs-item reveal">وجود تصدعات بالمبنى</div><div class="obs-item reveal">قناع الاكسجين منتهي الصلاحية 2025</div><div class="obs-item reveal">جهاز منزلي دوبلايزر بخار غير مستخدم</div><div class="obs-item reveal">اجهزة طبية لم تفحص منذ عام 2023</div><div class="obs-item reveal">لا يتم الالتزام بأساسيات مكافحة العدوى</div><div class="obs-item reveal">دورة مياة ذوي الاحتياجات الخاصة غير مطابقة للمواصفات</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-11" data-slide="11" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي الركنة</h2>
+      <div class="status-line">الجزء 1 من 2 — 9 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">بطاقات الموظفين منتهية</div><div class="obs-item reveal">لا توجد علامة( الجهاز يعمل ) على الأجهزة الطبية</div><div class="obs-item reveal">جهاز العلامات الحيوية لا يعمل</div><div class="obs-item reveal">وجود اسلاك كهربائية  مكشوفة (الدينمو )</div><div class="obs-item reveal">توجد نهايات حادة في الفناء الخارجي للمركز</div><div class="obs-item reveal">مخارج الطوارى غير مطابقة للمواصفات</div><div class="obs-item reveal">تخزين خاطى في المستودع دون تفريغ الأدوية من الكراتين</div><div class="obs-item reveal">لا يتم تطبيق سياسة الأدوية المتشابهه بالنطق واللفظ في الصيدلية</div><div class="obs-item reveal">لا توجد قائمة مراقبة للأدوية المخدرة بشكل يومي</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-12" data-slide="12" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي الركنة</h2>
+      <div class="status-line">الجزء 2 من 2 — 5 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">لا يتم الالتزام بأساسيات مكافحة العدوى</div><div class="obs-item reveal">لا يتم الحفاظ على خصوصية المريض</div><div class="obs-item reveal">دورة مياة ذوي الاحتياجات الخاصة غير مطابقة للمواصفات</div><div class="obs-item reveal">لا توجد لوحات إرشادية كافية</div><div class="obs-item reveal">لا توجد علامات توضح مخارج الطوارى</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-13" data-slide="13" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي الخشيبي</h2>
+      <div class="status-line">الجزء 1 من 2 — 9 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">بطاقات الموظفين منتهية</div><div class="obs-item reveal">لا توجد علامة( الجهاز يعمل ) على الأجهزة الطبية</div><div class="obs-item reveal">وجود أسلاك كهربائية مكشوفة في الفناء الخارجي</div><div class="obs-item reveal">مخارج الطوارى غير مطابقة للمواصفات</div><div class="obs-item reveal">لا توجد علامات الخطر البيولوجي على غرفة النفايات الطبية</div><div class="obs-item reveal">مكيف غرفة النفايات الطبية لا يعمل بشكل صحيح 35 درجة مئوية</div><div class="obs-item reveal">تخزين خاطى في المستودع / الملزمة</div><div class="obs-item reveal">المواد الخطرة لا يتم تخزينها  بشكل صحيح</div><div class="obs-item reveal">عدم الالتزام بأساسيات مكافحة العدوى</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-14" data-slide="14" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:300px;height:300px;top:-60px;right:-60px;background:#1d4ed8;opacity:.07"></div><div class="blob" style="width:230px;height:230px;bottom:-50px;left:-50px;background:#14b8a6;opacity:.06"></div></div>
+  <div class="content rtl-block">
+    <div class="center-head reveal">
+      <h2 class="section-title center-title">مركز صحي الخشيبي</h2>
+      <div class="status-line">الجزء 2 من 2 — 7 بنود</div>
+    </div>
+    <div class="obs-grid mt-5"><div class="obs-item reveal">عدم التعرف على المريض والتحقق من بياناته</div><div class="obs-item reveal">عدم الحفاظ على خصوصية المريض من قبل التمريض</div><div class="obs-item reveal">لم يتم فحص جهاز انذار الحريق</div><div class="obs-item reveal">وجود تصدعات في المبنى</div><div class="obs-item reveal">دورة مياة ذوي الاحتياجات الخاصة غير مطابقة للمواصفات</div><div class="obs-item reveal">عدم وجود أماكن انتظار كافية</div><div class="obs-item reveal">لا توجد لوحات إرشادية كافية</div></div>
+  </div>
+</div>
+
+
+<div class="slide slide-15" data-slide="15" dir="rtl">
+  <div class="gradient-mesh"><div class="blob" style="width:380px;height:380px;top:-80px;left:-70px;background:#14b8a6;opacity:.12"></div><div class="blob" style="width:280px;height:280px;bottom:-70px;right:-50px;background:#1d4ed8;opacity:.10"></div></div>
+  <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1"></canvas>
+  <div class="content rtl-block">
+    <h2 class="section-title reveal">التقييم الإجمالي للمراكز</h2>
+    <table class="eval-table mt-6 reveal"><thead><tr><th>المركز</th><th>غير المطابق</th><th>عالية الخطورة</th><th>التقييم</th></tr></thead><tbody><tr class="reveal"><td>مركز صحي الجرذاوية</td><td>12</td><td>4</td><td><span class="table-pill table-orange">ضعيف</span></td></tr><tr class="reveal"><td>مركز صحي رفائع اللهيب</td><td>19</td><td>7</td><td><span class="table-pill table-red">حرج</span></td></tr><tr class="reveal"><td>مركز صحي الهمجة</td><td>17</td><td>8</td><td><span class="table-pill table-red">حرج</span></td></tr><tr class="reveal"><td>مركز صحي الركنة</td><td>14</td><td>5</td><td><span class="table-pill table-orange">ضعيف</span></td></tr><tr class="reveal"><td>مركز صحي الخشيبي</td><td>16</td><td>6</td><td><span class="table-pill table-red">حرج</span></td></tr></tbody></table>
+  </div>
+</div>
+</div>
+<div class="nav-controls"><button class="nav-btn" onclick="changeSlide(-1)">&#8250;</button><div class="slide-dots" id="dots"></div><button class="nav-btn" onclick="changeSlide(1)">&#8249;</button><span class="slide-counter" id="counter">1 / 15</span></div>
+<script>
+let current=1; const total=document.querySelectorAll('.slide').length; const dotsContainer=document.getElementById('dots'); const counter=document.getElementById('counter');
+for(let i=1;i<=total;i++){const d=document.createElement('div'); d.className='dot'+(i===1?' active':''); d.onclick=()=>goToSlide(i); dotsContainer.appendChild(d);}
+function goToSlide(n){const prev=document.querySelector('.slide.active'); const next=document.querySelector(`.slide[data-slide="${n}"]`); if(prev) prev.classList.remove('active'); if(next){next.classList.add('active'); animateSlide(next);} current=n; updateNav();}
+function changeSlide(dir){let n=current+dir; if(n<1)n=total; if(n>total)n=1; goToSlide(n);}
+function updateNav(){document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i+1===current)); counter.textContent=`${current} / ${total}`;}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();changeSlide(1);} if(e.key==='ArrowLeft'){e.preventDefault();changeSlide(-1);}});
+let touchStartX=0; document.addEventListener('touchstart',e=>touchStartX=e.touches[0].clientX); document.addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].clientX; if(Math.abs(diff)>50) changeSlide(diff>0?1:-1);});
+function animateSlide(slide){slide.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transition='none'; el.style.opacity='0'; el.style.transform='translateY(18px)'; el.offsetHeight; const d=i*0.045; el.style.transition=`opacity .28s ease ${d}s, transform .28s ease ${d}s`; el.style.opacity='1'; el.style.transform='translateY(0)';});}
+window.initParticles=function(canvas,options){if(!canvas)return;const ctx=canvas.getContext('2d');canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;const count=options.count||40;const particles=Array.from({length:count},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,size:Math.random()*2+1,alpha:Math.random()*.3+.08}));(function anim(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=`rgba(20,184,166,${p.alpha})`;ctx.fill();});requestAnimationFrame(anim);})();};
+document.querySelectorAll('.particle-canvas').forEach(c=>window.initParticles(c,{count:44}));
+try{animateSlide(document.querySelector('.slide.active'));}catch(e){}
+</script>
+</body>
+</html>
