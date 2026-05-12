@@ -14,13 +14,14 @@
       --bg-main: #0b1e33;
       --bg-gradient: linear-gradient(135deg, #0b1e33 0%, #102a4d 100%);
       --accent-primary: #14b8a6;
-      /* 5-Level Risk Colors */
-      --accent-critical: #f87171; /* حرج */
-      --accent-weak: #fb923c;     /* ضعيف */
-      --accent-medium: #facc15;   /* متوسط */
-      --accent-good: #a3e635;     /* جيد */
-      --accent-excellent: #10b981;/* ممتاز */
       
+      /* تصنيفات الخطورة الجديدة */
+      --color-critical: #ef4444; /* حرج */
+      --color-weak: #f97316;     /* ضعيف */
+      --color-medium: #eab308;   /* متوسط */
+      --color-good: #3b82f6;     /* جيد */
+      --color-excellent: #22c55e; /* ممتاز */
+
       --text-main: #ffffff;
       --glass-bg: rgba(255, 255, 255, 0.05);
       --glass-border: rgba(255, 255, 255, 0.1);
@@ -108,22 +109,6 @@
     .stat-card { background: var(--glass-bg); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid var(--glass-border); }
     .stat-card span { display: block; font-size: 2rem; font-weight: 800; }
 
-    /* CSS Simple Chart */
-    .chart-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      padding: 20px;
-      border-radius: 18px;
-      margin-bottom: 20px;
-    }
-    .chart-row { display: flex; flex-direction: column; gap: 6px; }
-    .chart-info { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; }
-    .chart-bar-bg { background: rgba(255, 255, 255, 0.08); height: 10px; border-radius: 10px; width: 100%; overflow: hidden; }
-    .chart-bar-fill { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
-
     /* Nav Buttons */
     .nav-nav {
       position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
@@ -133,29 +118,63 @@
     }
     .n-btn { background: var(--accent-primary); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; }
 
-    /* Badges (5 Levels) */
-    .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; }
-    .bg-critical { background: rgba(248,113,113,0.2); color: var(--accent-critical); border: 1px solid var(--accent-critical); }
-    .bg-weak { background: rgba(251,146,60,0.2); color: var(--accent-weak); border: 1px solid var(--accent-weak); }
-    .bg-medium { background: rgba(250,204,21,0.2); color: var(--accent-medium); border: 1px solid var(--accent-medium); }
-    .bg-good { background: rgba(163,230,53,0.2); color: var(--accent-good); border: 1px solid var(--accent-good); }
-    .bg-excellent { background: rgba(16,185,129,0.2); color: var(--accent-excellent); border: 1px solid var(--accent-excellent); }
+    /* Badges */
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; display: inline-block;}
+    .bg-critical { background: rgba(239, 68, 68, 0.2); color: var(--color-critical); border: 1px solid var(--color-critical); }
+    .bg-weak { background: rgba(249, 115, 22, 0.2); color: var(--color-weak); border: 1px solid var(--color-weak); }
+    .bg-medium { background: rgba(234, 179, 8, 0.2); color: var(--color-medium); border: 1px solid var(--color-medium); }
+    .bg-good { background: rgba(59, 130, 246, 0.2); color: var(--color-good); border: 1px solid var(--color-good); }
+    .bg-excellent { background: rgba(34, 197, 94, 0.2); color: var(--color-excellent); border: 1px solid var(--color-excellent); }
+
+    /* Professional Grouped Chart (KPIs) */
+    .kpi-chart-container {
+      display: flex; flex-direction: column; gap: 18px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      padding: 20px; border-radius: 18px;
+    }
+    .kpi-row {
+      display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 15px;
+      padding-bottom: 12px; border-bottom: 1px dashed rgba(255,255,255,0.05);
+    }
+    .kpi-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .kpi-label { font-weight: 700; font-size: 0.95rem; }
+    
+    .kpi-bars { display: flex; flex-direction: column; gap: 8px; }
+    .bar-group { display: flex; align-items: center; gap: 10px; }
+    .bar-title { width: 90px; font-size: 0.75rem; color: #9fb6cc; text-align: right; }
+    .bar-bg { flex: 1; background: rgba(255, 255, 255, 0.08); height: 12px; border-radius: 10px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: flex-end; padding-left: 5px; font-size: 0.65rem; font-weight: bold; color: #fff;}
+    
+    .fill-critical { background: var(--color-critical); }
+    .fill-weak { background: var(--color-weak); }
+    .fill-medium { background: var(--color-medium); }
+    .fill-good { background: var(--color-good); }
+    .fill-excellent { background: var(--color-excellent); }
 
     /* Tables */
-    .pro-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
-    .pro-table th { padding: 12px; text-align: right; color: var(--accent-primary); font-size: 0.9rem; }
+    .pro-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; text-align: right; }
+    .pro-table th { padding: 12px; color: var(--accent-primary); font-size: 0.9rem; border-bottom: 1px solid var(--glass-border); }
     .pro-table td { background: var(--glass-bg); padding: 12px 15px; font-weight: 500; font-size: 0.9rem; }
     .pro-table tr td:first-child { border-radius: 0 12px 12px 0; }
     .pro-table tr td:last-child { border-radius: 12px 0 0 12px; }
 
-    /* Checklist specific */
-    .section-title { margin-top: 20px; color: var(--accent-primary); font-size: 1.1rem; border-bottom: 1px dashed var(--glass-border); padding-bottom: 5px; }
+    /* Checklist Styles */
+    .checklist-wrap { background: var(--glass-bg); border-radius: 12px; padding: 10px; overflow-x: auto; }
+    .chk-table { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 0.85rem; }
+    .chk-table th { background: rgba(20, 184, 166, 0.15); color: var(--accent-primary); padding: 12px; text-align: right; border: 1px solid var(--glass-border); }
+    .chk-table td { padding: 10px 12px; border: 1px solid var(--glass-border); vertical-align: middle; }
+    .chk-table tr:hover td { background: rgba(255,255,255,0.05); }
+    .chk-section { background: rgba(255,255,255,0.1) !important; font-weight: 800; color: #fff; text-align: center !important; }
+    .checkbox-box { width: 18px; height: 18px; border: 2px solid #9fb6cc; border-radius: 3px; margin: 0 auto; }
 
     @media (max-width: 768px) {
       .obs-grid { grid-template-columns: 1fr; }
       h1 { font-size: 1.3rem; }
       .slide { padding-top: 1rem; }
       .slide-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .kpi-row { grid-template-columns: 1fr; gap: 8px; }
+      .bar-title { width: 70px; }
+      
       .pro-table thead { display: none; }
       .pro-table td { display: block; text-align: left; padding: 10px; border-radius: 8px !important; margin-bottom: 5px; }
       .pro-table td::before { content: attr(data-label); float: right; font-weight: 800; color: var(--accent-primary); }
@@ -181,237 +200,384 @@
       </div>
       <div class="stats-container">
         <div class="stat-card"><span>118</span>إجمالي الملاحظات</div>
-        <div class="stat-card"><span style="color:var(--accent-critical)">40</span>عالية الخطورة (حرج)</div>
-        <div class="stat-card"><span style="color:var(--accent-medium)">78</span>متوسطة وضعيفة</div>
-        <div class="stat-card"><span>8</span>مراكز صحية</div>
+        <div class="stat-card"><span style="color:var(--color-critical)">77</span>عالية الخطورة (حرج)</div>
+        <div class="stat-card"><span style="color:var(--color-weak)">31</span>متوسطة (ضعيف)</div>
+        <div class="stat-card"><span style="color:var(--color-medium)">10</span>ملاحظات (متوسط)</div>
       </div>
     </section>
 
     <section class="slide">
       <div class="slide-header">
-        <h2>مركز صحي الهمجة (17 ملاحظة)</h2>
-        <span class="badge bg-critical">حرج (95%)</span>
+        <h2>لوحة قياس الأداء (KPIs)</h2>
+        <span style="font-size:0.8rem; color:#9fb6cc;">مؤشر الخطورة مقابل مؤشر الحالة لكل مركز</span>
       </div>
-      <div class="obs-grid">
-        <div class="obs-item">نقص حاد في الكادر البشري بالمركز</div>
-        <div class="obs-item">بعض الأجهزة الطبية لا تعمل</div>
-        <div class="obs-item">عربة الطوارئ غير مقفلة ولا يوجد فحص يومي لها</div>
-        <div class="obs-item">لا توجد قائمة مراقبة للأدوية المخدرة</div>
-        <div class="obs-item">قناع الأكسجين منتهي الصلاحية (2025)</div>
-        <div class="obs-item">عدم الالتزام بأساسيات مكافحة العدوى</div>
-      </div>
-    </section>
+      
+      <div class="kpi-chart-container">
+        
+        <div class="kpi-row">
+          <div class="kpi-label">رفائع اللهيب</div>
+          <div class="kpi-bars">
+            <div class="bar-group"><div class="bar-title">الخطورة</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 95%;">95%</div></div></div>
+            <div class="bar-group"><div class="bar-title">الحالة (حرج)</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 90%;">90%</div></div></div>
+          </div>
+        </div>
 
-    <section class="slide">
-      <div class="slide-header">
-        <h2>مركز صحي دخنة (16 ملاحظة)</h2>
-        <span class="badge bg-critical">حرج (90%)</span>
-      </div>
-      <div class="obs-grid">
-        <div class="obs-item">النظافة الداخلية للمركز سيئة</div>
-        <div class="obs-item">وجود أجهزة طبية لا تعمل (جهاز صدمات)</div>
-        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
-        <div class="obs-item">وجود أدوية منتهية الصلاحية (إبر)</div>
-        <div class="obs-item">لا يتم الحفاظ على خصوصية المريض</div>
-      </div>
-    </section>
+        <div class="kpi-row">
+          <div class="kpi-label">الهمجة</div>
+          <div class="kpi-bars">
+            <div class="bar-group"><div class="bar-title">الخطورة</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 90%;">90%</div></div></div>
+            <div class="bar-group"><div class="bar-title">الحالة (حرج)</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 88%;">88%</div></div></div>
+          </div>
+        </div>
 
-    <section class="slide">
-      <div class="slide-header">
-        <h2>مركز صحي الخشيبي (16 ملاحظة)</h2>
-        <span class="badge bg-critical">حرج (85%)</span>
-      </div>
-      <div class="obs-grid">
-        <div class="obs-item">وجود أسلاك كهربائية مكشوفة في الفناء</div>
-        <div class="obs-item">لا توجد علامات الخطر البيولوجي على غرفة النفايات</div>
-        <div class="obs-item">المواد الخطرة لا يتم تخزينها بشكل صحيح</div>
-        <div class="obs-item">لم يتم فحص جهاز إنذار الحريق</div>
+        <div class="kpi-row">
+          <div class="kpi-label">دخنة</div>
+          <div class="kpi-bars">
+            <div class="bar-group"><div class="bar-title">الخطورة</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 88%;">88%</div></div></div>
+            <div class="bar-group"><div class="bar-title">الحالة (حرج)</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 85%;">85%</div></div></div>
+          </div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi-label">الخشيبي</div>
+          <div class="kpi-bars">
+            <div class="bar-group"><div class="bar-title">الخطورة</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 85%;">85%</div></div></div>
+            <div class="bar-group"><div class="bar-title">الحالة (حرج)</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 80%;">80%</div></div></div>
+          </div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi-label">الدحلة</div>
+          <div class="kpi-bars">
+            <div class="bar-group"><div class="bar-title">الخطورة</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 80%;">80%</div></div></div>
+            <div class="bar-group"><div class="bar-title">الحالة (حرج)</div><div class="bar-bg"><div class="bar-fill fill-critical" style="width: 75%;">75%</div></div></div>
+          </div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi-label">الركنة</div>
+          <div class="kpi-bars">
+            <div class="bar-group"><div class="bar-title">الخطورة</div><div class="bar-bg"><div class="bar-fill fill-weak" style="width: 65%;">65%</div></div></div>
+            <div class="bar-group"><div class="bar-title">الحالة (ضعيف)</div><div class="bar-bg"><div class="bar-fill fill-weak" style="width: 60%;">60%</div></div></div>
+          </div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi-label">الجرذاوية</div>
+          <div class="kpi-bars">
+            <div class="bar-group"><div class="bar-title">الخطورة</div><div class="bar-bg"><div class="bar-fill fill-weak" style="width: 60%;">60%</div></div></div>
+            <div class="bar-group"><div class="bar-title">الحالة (ضعيف)</div><div class="bar-bg"><div class="bar-fill fill-weak" style="width: 55%;">55%</div></div></div>
+          </div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi-label">الشبيكية</div>
+          <div class="kpi-bars">
+            <div class="bar-group"><div class="bar-title">الخطورة</div><div class="bar-bg"><div class="bar-fill fill-medium" style="width: 45%;">45%</div></div></div>
+            <div class="bar-group"><div class="bar-title">الحالة (متوسط)</div><div class="bar-bg"><div class="bar-fill fill-medium" style="width: 40%;">40%</div></div></div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <section class="slide">
       <div class="slide-header">
         <h2>مركز رفائع اللهيب (19 ملاحظة)</h2>
-        <span class="badge bg-critical">حرج (80%)</span>
+        <span class="badge bg-critical">حرج</span>
       </div>
       <div class="obs-grid">
+        <div class="obs-item">مواقف ذوي الاحتياجات غير كافية أو غير مطابقة</div>
         <div class="obs-item">النظافة الخارجية للمركز دون المستوى</div>
-        <div class="obs-item">سياسة الأدوية المتشابهة (LASA) غير مفعلة</div>
+        <div class="obs-item">بطاقات الموظفين منتهية</div>
+        <div class="obs-item">لا توجد علامة (الجهاز يعمل) على الأجهزة</div>
+        <div class="obs-item">لا توجد حواجز جانية لذوي الاحتياجات في المدخل</div>
+        <div class="obs-item">تخزين خاطئ في المستودع</div>
         <div class="obs-item">المواد الخطرة لا يتم عزلها بشكل صحيح</div>
+        <div class="obs-item">سياسة الأدوية المتشابهة (LASA) غير مفعلة</div>
+        <div class="obs-item">لا توجد قائمة بانتهاء صلاحية الأدوية</div>
+        <div class="obs-item">لا توجد قائمة مراقبة للأدوية المخدرة يومياً</div>
+        <div class="obs-item">عدم الالتزام بأساسيات مكافحة العدوى</div>
+        <div class="obs-item">دورة مياه ذوي الاحتياجات غير مطابقة</div>
         <div class="obs-item">نقص أدوات الوقاية الشخصية في العيادات</div>
-      </div>
-    </section>
-
-    <section class="slide">
-      <div class="slide-header">
-        <h2>مركز صحي الدحلة (13 ملاحظة)</h2>
-        <span class="badge bg-critical">حرج (75%)</span>
-      </div>
-      <div class="obs-grid">
+        <div class="obs-item">عدم الحفاظ على خصوصية المريض في المحطات</div>
+        <div class="obs-item">لا يتم فحص طفايات الحريق دورياً</div>
+        <div class="obs-item">لا يتم فحص جهاز الإنذار دورياً</div>
+        <div class="obs-item">نقص في اللوحات الإرشادية</div>
+        <div class="obs-item">لا توجد علامات توضح مخارج الطوارئ</div>
         <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
-        <div class="obs-item">عدم وجود أدوات الوقاية الشخصية في العيادات</div>
-        <div class="obs-item">أسلاك مكشوفة في دورة المياه</div>
-        <div class="obs-item">صندوق حريق يحتاج إلى استبدال</div>
       </div>
     </section>
 
     <section class="slide">
       <div class="slide-header">
-        <h2>مركز صحي الجرذاوية (13 ملاحظة)</h2>
-        <span class="badge bg-weak">ضعيف (60%)</span>
+        <h2>مركز صحي الهمجة (17 ملاحظة)</h2>
+        <span class="badge bg-critical">حرج</span>
       </div>
       <div class="obs-grid">
-        <div class="obs-item">مكيف غرفة النفايات الطبية لا يعمل بشكل صحيح</div>
-        <div class="obs-item">يوجد تخزين خاطئ في المستودع</div>
-        <div class="obs-item">يوجد جل (سونار) منتهي الصلاحية</div>
-        <div class="obs-item">عدم الالتزام بسياسات مكافحة العدوى</div>
-      </div>
-    </section>
-
-    <section class="slide">
-      <div class="slide-header">
-        <h2>مركز صحي الركنة (14 ملاحظة)</h2>
-        <span class="badge bg-weak">ضعيف (55%)</span>
-      </div>
-      <div class="obs-grid">
-        <div class="obs-item">جهاز العلامات الحيوية لا يعمل</div>
-        <div class="obs-item">تخزين خاطئ للأدوية داخل الكراتين الأصلية</div>
-        <div class="obs-item">عدم الحفاظ على خصوصية المريض</div>
+        <div class="obs-item">بطاقات الموظفين منتهية</div>
+        <div class="obs-item">نقص حاد في الكادر البشري بالمركز</div>
+        <div class="obs-item">لا توجد علامة (الجهاز يعمل) على الأجهزة</div>
+        <div class="obs-item">بعض الأجهزة الطبية لا تعمل</div>
+        <div class="obs-item">يوجد أثاث رجيع في المركز</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">جميع أجهزة قياس الحرارة في المركز لا تعمل</div>
+        <div class="obs-item">لا توجد قائمة مراقبة للأدوية المخدرة</div>
+        <div class="obs-item">لم يتم تدوين تواريخ الانتهاء في المستودع</div>
+        <div class="obs-item">عربة الطوارئ غير مقفلة</div>
+        <div class="obs-item">لا يوجد فحص يومي لعربة الطوارئ</div>
+        <div class="obs-item">وجود تصدعات بالمبنى</div>
+        <div class="obs-item">قناع الأكسجين منتهي الصلاحية (2025)</div>
+        <div class="obs-item">جهاز بخار (نبيولايزر) منزلي غير مستخدم</div>
+        <div class="obs-item">أجهزة طبية لم تفحص منذ عام 2023</div>
+        <div class="obs-item">عدم الالتزام بأساسيات مكافحة العدوى</div>
         <div class="obs-item">دورة مياه ذوي الاحتياجات غير مطابقة</div>
       </div>
     </section>
 
     <section class="slide">
       <div class="slide-header">
+        <h2>مركز صحي دخنة (16 ملاحظة)</h2>
+        <span class="badge bg-critical">حرج</span>
+      </div>
+      <div class="obs-grid">
+        <div class="obs-item">النظافة الداخلية للمركز سيئة</div>
+        <div class="obs-item">عدم تواجد الموظفين في أماكن عملهم</div>
+        <div class="obs-item">بطاقات الموظفين منتهية</div>
+        <div class="obs-item">وجود أجهزة طبية لا تعمل (جهاز صدمات)</div>
+        <div class="obs-item">وجود أثاث رجيع</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">وجود تخزين خاطئ في المستودع</div>
+        <div class="obs-item">المواد الخطرة لا يتم تخزينها بشكل صحيح</div>
+        <div class="obs-item">عربة الطوارئ غير مقفلة</div>
+        <div class="obs-item">لا يوجد فحص يومي لعربة الطوارئ</div>
+        <div class="obs-item">عدم الالتزام بأساسيات مكافحة العدوى</div>
+        <div class="obs-item">لا يتم التعرف على المريض والتحقق من بياناته</div>
+        <div class="obs-item">لا يتم الحفاظ على خصوصية المريض (تمريض رجال)</div>
+        <div class="obs-item">يوجد تصدعات في المبنى (الأشعة)</div>
+        <div class="obs-item">دورة مياه ذوي الاحتياجات الخاصة غير مطابقة للمواصفات</div>
+        <div class="obs-item">وجود أدوية منتهية الصلاحية (إبر)</div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-header">
+        <h2>مركز صحي الخشيبي (16 ملاحظة)</h2>
+        <span class="badge bg-critical">حرج</span>
+      </div>
+      <div class="obs-grid">
+        <div class="obs-item">بطاقات الموظفين منتهية</div>
+        <div class="obs-item">لا توجد علامة (الجهاز يعمل) على الأجهزة</div>
+        <div class="obs-item">وجود أسلاك كهربائية مكشوفة في الفناء</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">لا توجد علامات الخطر البيولوجي على غرفة النفايات</div>
+        <div class="obs-item">مكيف غرفة النفايات لا يعمل (35 درجة)</div>
+        <div class="obs-item">تخزين خاطئ في المستودع / الملزمة</div>
+        <div class="obs-item">المواد الخطرة لا يتم تخزينها بشكل صحيح</div>
+        <div class="obs-item">عدم الالتزام بأساسيات مكافحة العدوى</div>
+        <div class="obs-item">عدم التعرف على المريض والتحقق من بياناته</div>
+        <div class="obs-item">عدم الحفاظ على خصوصية المريض من قبل التمريض</div>
+        <div class="obs-item">لم يتم فحص جهاز إنذار الحريق</div>
+        <div class="obs-item">وجود تصدعات في المبنى</div>
+        <div class="obs-item">دورة مياه ذوي الاحتياجات غير مطابقة</div>
+        <div class="obs-item">عدم وجود أماكن انتظار كافية</div>
+        <div class="obs-item">نقص اللوحات الإرشادية</div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-header">
+        <h2>مركز صحي الدحلة (13 ملاحظة)</h2>
+        <span class="badge bg-critical">حرج</span>
+      </div>
+      <div class="obs-grid">
+        <div class="obs-item">بطاقات الموظفين منتهية</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">عدم وجود علامة الخطر البيولوجي على غرفة النفايات الطبية</div>
+        <div class="obs-item">المواد الخطرة لا يتم تخزينها بشكل صحيح</div>
+        <div class="obs-item">عدم الالتزام بأساسيات مكافحة العدوى</div>
+        <div class="obs-item">عدم وجود أدوات الوقاية الشخصية في العيادات</div>
+        <div class="obs-item">لم يتم فحص جهاز إنذار الحريق</div>
+        <div class="obs-item">دورة مياه ذوي الاحتياجات الخاصة غير مطابقة للمواصفات</div>
+        <div class="obs-item">عدم وجود لوحات إرشادية كافية</div>
+        <div class="obs-item">تخزين عشوائي أسفل الدرج</div>
+        <div class="obs-item">أسلاك مكشوفة في دورة المياه</div>
+        <div class="obs-item">صندوق حريق يحتاج إلى استبدال</div>
+        <div class="obs-item">عدم وجود علامات توضح مخارج الطوارئ</div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-header">
+        <h2>مركز صحي الركنة (14 ملاحظة)</h2>
+        <span class="badge bg-weak">ضعيف</span>
+      </div>
+      <div class="obs-grid">
+        <div class="obs-item">بطاقات الموظفين منتهية</div>
+        <div class="obs-item">لا توجد علامة (الجهاز يعمل) على الأجهزة</div>
+        <div class="obs-item">جهاز العلامات الحيوية لا يعمل</div>
+        <div class="obs-item">وجود أسلاك كهربائية مكشوفة (الدينمو)</div>
+        <div class="obs-item">توجد نهايات حادة في الفناء الخارجي</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">تخزين خاطئ للأدوية داخل الكراتين الأصلية</div>
+        <div class="obs-item">سياسة الأدوية المتشابهة (LASA) غير مفعلة</div>
+        <div class="obs-item">لا توجد قائمة مراقبة للأدوية المخدرة</div>
+        <div class="obs-item">عدم الالتزام بأساسيات مكافحة العدوى</div>
+        <div class="obs-item">عدم الحفاظ على خصوصية المريض</div>
+        <div class="obs-item">دورة مياه ذوي الاحتياجات غير مطابقة</div>
+        <div class="obs-item">نقص اللوحات الإرشادية</div>
+        <div class="obs-item">لا توجد علامات توضح مخارج الطوارئ</div>
+      </div>
+    </section>
+    
+    <section class="slide">
+      <div class="slide-header">
+        <h2>مركز صحي الجرذاوية (13 ملاحظة)</h2>
+        <span class="badge bg-weak">ضعيف</span>
+      </div>
+      <div class="obs-grid">
+        <div class="obs-item">البطاقات التعريفية للموظفين قديمة</div>
+        <div class="obs-item">لا توجد علامة (الجهاز يعمل) على الأجهزة الطبية</div>
+        <div class="obs-item">يوجد أثاث رجيع في المركز</div>
+        <div class="obs-item">توجد نهايات حادة في الفناء الخارجي</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">مكيف غرفة النفايات الطبية لا يعمل بشكل صحيح (30 درجة)</div>
+        <div class="obs-item">يوجد تخزين خاطئ في المستودع</div>
+        <div class="obs-item">لا يوجد فحص يومي لعربة الطوارئ</div>
+        <div class="obs-item">لا توجد علامات توضح تاريخ الفتح للأدوية متعددة الاستخدام</div>
+        <div class="obs-item">عدم الالتزام بسياسات مكافحة العدوى</div>
+        <div class="obs-item">نقص أدوات الوقاية الشخصية في العيادات</div>
+        <div class="obs-item">وجود تصدعات في مبنى المركز</div>
+        <div class="obs-item">يوجد جل (سونار) منتهي الصلاحية</div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-header">
         <h2>مركز صحي الشبيكية (10 ملاحظات)</h2>
-        <span class="badge bg-medium">متوسط (45%)</span>
+        <span class="badge bg-medium">متوسط</span>
       </div>
       <div class="obs-grid">
         <div class="obs-item">النظافة الخارجية للمركز سيئة</div>
         <div class="obs-item">إنارة المركز الخارجية تحتاج إلى إصلاح</div>
+        <div class="obs-item">بطاقات الموظفين منتهية</div>
+        <div class="obs-item">مخارج الطوارئ غير مطابقة للمواصفات</div>
+        <div class="obs-item">عدم وجود علامة الخطر البيولوجي على غرفة النفايات</div>
+        <div class="obs-item">مكيف غرفة النفايات الطبية درجة حرارته مرتفعة (30 درجة)</div>
         <div class="obs-item">عربة الطوارئ غير مقفلة</div>
+        <div class="obs-item">لا يوجد فحص يومي لعربة الطوارئ</div>
+        <div class="obs-item">عدم الالتزام بأساسيات مكافحة العدوى</div>
+        <div class="obs-item">دورة المياه غير مطابقة لمتطلبات ذوي الاحتياجات الخاصة</div>
       </div>
     </section>
 
     <section class="slide">
       <div class="slide-header">
         <h2>التقييم العام النهائي للمراكز</h2>
-        <span style="font-size:0.8rem; color:#9fb6cc;">مرتبة تنازلياً حسب مستوى الخطورة</span>
+        <span style="font-size:0.8rem; color:#9fb6cc;">مرتب تنازلياً حسب مستوى الخطورة</span>
       </div>
-      
-      <div class="chart-container">
-        <div class="chart-row">
-          <div class="chart-info"><span>1. الهمجة</span><span style="color:var(--accent-critical)">95%</span></div>
-          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 95%; background: var(--accent-critical);"></div></div>
-        </div>
-        <div class="chart-row">
-          <div class="chart-info"><span>2. دخنة</span><span style="color:var(--accent-critical)">90%</span></div>
-          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 90%; background: var(--accent-critical);"></div></div>
-        </div>
-        <div class="chart-row">
-          <div class="chart-info"><span>3. الخشيبي</span><span style="color:var(--accent-critical)">85%</span></div>
-          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 85%; background: var(--accent-critical);"></div></div>
-        </div>
-        <div class="chart-row">
-          <div class="chart-info"><span>4. رفائع اللهيب</span><span style="color:var(--accent-critical)">80%</span></div>
-          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 80%; background: var(--accent-critical);"></div></div>
-        </div>
-        <div class="chart-row">
-          <div class="chart-info"><span>5. الدحلة</span><span style="color:var(--accent-critical)">75%</span></div>
-          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 75%; background: var(--accent-critical);"></div></div>
-        </div>
-        <div class="chart-row">
-          <div class="chart-info"><span>6. الجرذاوية</span><span style="color:var(--accent-weak)">60%</span></div>
-          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 60%; background: var(--accent-weak);"></div></div>
-        </div>
-        <div class="chart-row">
-          <div class="chart-info"><span>7. الركنة</span><span style="color:var(--accent-weak)">55%</span></div>
-          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 55%; background: var(--accent-weak);"></div></div>
-        </div>
-        <div class="chart-row">
-          <div class="chart-info"><span>8. الشبيكية</span><span style="color:var(--accent-medium)">45%</span></div>
-          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 45%; background: var(--accent-medium);"></div></div>
-        </div>
-      </div>
-
       <table class="pro-table">
         <thead>
           <tr>
             <th>المركز الصحي</th>
-            <th>مؤشر الخطورة (%)</th>
-            <th>مستوى الخطورة / الحالة</th>
+            <th>مؤشر الخطورة</th>
+            <th>الحالة</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td data-label="المركز">الهمجة</td><td data-label="المؤشر">95%</td><td><span class="badge bg-critical">حرج</span></td></tr>
-          <tr><td data-label="المركز">دخنة</td><td data-label="المؤشر">90%</td><td><span class="badge bg-critical">حرج</span></td></tr>
-          <tr><td data-label="المركز">الخشيبي</td><td data-label="المؤشر">85%</td><td><span class="badge bg-critical">حرج</span></td></tr>
-          <tr><td data-label="المركز">رفائع اللهيب</td><td data-label="المؤشر">80%</td><td><span class="badge bg-critical">حرج</span></td></tr>
-          <tr><td data-label="المركز">الدحلة</td><td data-label="المؤشر">75%</td><td><span class="badge bg-critical">حرج</span></td></tr>
-          <tr><td data-label="المركز">الجرذاوية</td><td data-label="المؤشر">60%</td><td><span class="badge bg-weak">ضعيف</span></td></tr>
-          <tr><td data-label="المركز">الركنة</td><td data-label="المؤشر">55%</td><td><span class="badge bg-weak">ضعيف</span></td></tr>
-          <tr><td data-label="المركز">الشبيكية</td><td data-label="المؤشر">45%</td><td><span class="badge bg-medium">متوسط</span></td></tr>
+          <tr><td data-label="المركز">رفائع اللهيب</td><td>عالية جداً (95%)</td><td><span class="badge bg-critical">حرج</span></td></tr>
+          <tr><td data-label="المركز">الهمجة</td><td>عالية جداً (90%)</td><td><span class="badge bg-critical">حرج</span></td></tr>
+          <tr><td data-label="المركز">دخنة</td><td>عالية جداً (88%)</td><td><span class="badge bg-critical">حرج</span></td></tr>
+          <tr><td data-label="المركز">الخشيبي</td><td>عالية (85%)</td><td><span class="badge bg-critical">حرج</span></td></tr>
+          <tr><td data-label="المركز">الدحلة</td><td>عالية (80%)</td><td><span class="badge bg-critical">حرج</span></td></tr>
+          <tr><td data-label="المركز">الركنة</td><td>متوسطة إلى عالية (65%)</td><td><span class="badge bg-weak">ضعيف</span></td></tr>
+          <tr><td data-label="المركز">الجرذاوية</td><td>متوسطة إلى عالية (60%)</td><td><span class="badge bg-weak">ضعيف</span></td></tr>
+          <tr><td data-label="المركز">الشبيكية</td><td>متوسطة (45%)</td><td><span class="badge bg-medium">متوسط</span></td></tr>
         </tbody>
       </table>
     </section>
 
     <section class="slide">
       <div class="slide-header">
-        <h2>مرفق: قائمة الفحص الإشرافي للمراكز الصحية</h2>
-        <span class="badge bg-good">مستخرجة من الأكسل المرفق</span>
+        <h2>قائمة الفحص للفريق الإشرافي على المراكز الصحية</h2>
       </div>
-      
-      <div class="section-title">قسم الأمن والسلامة</div>
-      <table class="pro-table">
-        <tbody>
-          <tr><td>توجد نهايات حادة في الفناء الخارجي للمركز</td></tr>
-          <tr><td>الامتثال لسياسة منع التدخين</td></tr>
-          <tr><td>مخارج الطوارئ معلمة ومطابقة للاشتراطات</td></tr>
-          <tr><td>يتم فحص طفايات وجهاز إنذار الحريق دورياً</td></tr>
-          <tr><td>نقاط التجمع موجودة ومطابقة للمواصفات</td></tr>
-        </tbody>
-      </table>
+      <div class="checklist-wrap">
+        <table class="chk-table">
+          <thead>
+            <tr>
+              <th width="5%" style="text-align: center;">م</th>
+              <th width="55%">البند</th>
+              <th width="10%" style="text-align: center;">الامتثال: نعم</th>
+              <th width="10%" style="text-align: center;">الامتثال: لا</th>
+              <th width="20%">ملاحظات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="5" class="chk-section">قسم الأمن والسلامة</td></tr>
+            <tr><td style="text-align: center;">1</td><td>توجد نهايات حادة في الفناء الخارجي للمركز</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">2</td><td>الامتثال لسياسة منع التدخين (لا توجد أعقاب سجائر، توجد لوحة ممنوع التدخين وعليها الغرامة)</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">3</td><td>مخارج الطوارئ معلمة ومطابقة للاشتراطات</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">4</td><td>يتم فحص طفايات الحريق دورياً</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">5</td><td>عدد طفايات الحريق مناسب لمساحة المركز ونطاق خدماته</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">6</td><td>يتم فحص جهاز إنذار الحريق دورياً</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">7</td><td>توجد علامات توضح مخارج الطوارئ</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">8</td><td>توجد أجسام تعيق حركة المراجعين للمركز</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">9</td><td>نقاط التجمع موجودة ومطابقة للمواصفات</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">10</td><td>لوحة تحكم نظام إنذار الحريق، تعمل بشكل صحيح</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">11</td><td>وجود مخطط لمخارج الطوارئ</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
 
-      <div class="section-title">قسم الصيانة والمرافق العامة</div>
-      <table class="pro-table">
-        <tbody>
-          <tr><td>اللوحة الخارجية للمركز موجودة وبحالة جيدة</td></tr>
-          <tr><td>المواقف الخارجية كافية ومطابقة للمواصفات</td></tr>
-          <tr><td>عدم وجود أثاث رجيع بالمركز</td></tr>
-        </tbody>
-      </table>
+            <tr><td colspan="5" class="chk-section">قسم الصيانة والمرافق العامة</td></tr>
+            <tr><td style="text-align: center;">1</td><td>اللوحة الخارجية للمركز موجودة وبحالة جيدة</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">2</td><td>المواقف الخارجية للمراجعين وذوي الاحتياجات الخاصة كافية ومطابقة للمواصفات</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">3</td><td>عدم وجود أثاث رجيع بالمركز</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">4</td><td>عدم وجود اسلاك كهربائية مكشوفة</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">5</td><td>وجود علامات على مداخل و مواقف ذوي الاحتياجات الخاصة</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">6</td><td>وجود حواجز جانبية على مداخل ذوي الاحتياجات الخاصة</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">7</td><td>مستوى ميلان مداخل ذوي الاحتياجات الخاصة مطابق للمواصفات</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">8</td><td>خزانات المياه مغلقة</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">9</td><td>عدم وجود تصدعات بالمبنى</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">10</td><td>عدم وجود ملاحظات في السباكة</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">11</td><td>عدم وجود ملاحظات في التوصيلات الكهربائية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">12</td><td>توجد دورة مياه لذوي الاحتياجات الخاصة مطابقة للمواصفات</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">13</td><td>أماكن انتظار المراجعين منظمة و كافية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">14</td><td>توجد لوحات ارشادية كافية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">15</td><td>مستوى الإضاءة جيد</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
 
-      <div class="section-title">قسم الصيدلية والتموين</div>
-      <table class="pro-table">
-        <tbody>
-          <tr><td>يتم تدوين تواريخ الصلاحية على المواد المخزنة والأدوية</td></tr>
-          <tr><td>يتم تطبيق سياسة الأدوية المتشابهة (LASA) بالصيدلية</td></tr>
-          <tr><td>يتم مراقبة الأدوية المخدرة بصورة يومية</td></tr>
-        </tbody>
-      </table>
+            <tr><td colspan="5" class="chk-section">قسم الصيدلية والمستودع الطبي</td></tr>
+            <tr><td style="text-align: center;">1</td><td>يتم قياس درجة حرارة المستودع</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">2</td><td>يوجد تخزين علوي أو سفلي أكثر من 40سم</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">3</td><td>يتم حصر وعزل و تخزين المواد الخطرة في دواليب مغلقة</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">4</td><td>يتم تدوين تواريخ الصلاحية على أرفف المواد المخزنة بالمستودع</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">5</td><td>يتم تدوين تاريخ الصلاحية على الأدوية بالصيدلية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">6</td><td>يتم تطبيق سياسة الأدوية المتشابهة في اللفظ والنطق بالصيدلية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">7</td><td>وجود قائمة بانتهاء صلاحية الأدوية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">8</td><td>يتم مراقبة الأدوية المخدرة بصورة يومية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">9</td><td>توجد أدوية منتهية الصلاحية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
 
-      <div class="section-title">قسم مكافحة العدوى وصحة البيئة</div>
-      <table class="pro-table">
-        <tbody>
-          <tr><td>النظافة الخارجية والداخلية للمركز</td></tr>
-          <tr><td>وجود علامة الخطر البيولوجي وتكييف يعمل بغرفة النفايات</td></tr>
-          <tr><td>الالتزام بأساسيات مكافحة العدوى وتوافر أدوات الوقاية الشخصية</td></tr>
-        </tbody>
-      </table>
+            <tr><td colspan="5" class="chk-section">قسم مكافحة العدوى وصحة البيئة</td></tr>
+            <tr><td style="text-align: center;">1</td><td>النظافة الخارجية للمركز</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">2</td><td>النظافة الداخلية للمركز</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">3</td><td>وجود علامة الخطر البيولوجي على غرفة النفايات وعلي عربات نقل النفايات</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">4</td><td>مكيف غرفة النفايات يعمل و يتم تسجيل درجة حرارة الغرفة</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">5</td><td>الالتزام بأساسيات مكافحة العدوى</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">6</td><td>وجود أدوات الوقاية الشخصية في جميع العيادات وفي المختبر والصيدلية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">7</td><td>وجود أدوات التعامل مع الانسكابات في جميع العيادات وفي المختبر والصيدلية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
 
-      <div class="section-title">قسم التمريض والخدمات الطبية</div>
-      <table class="pro-table">
-        <tbody>
-          <tr><td>وجود علامة الجهاز يعمل علي جميع الأجهزة الطبية وتأكيد عملها</td></tr>
-          <tr><td>عربة الطوارئ مغلقة ويتم فحصها بشكل دوري</td></tr>
-        </tbody>
-      </table>
+            <tr><td colspan="5" class="chk-section">قسم التمريض والخدمات الطبية</td></tr>
+            <tr><td style="text-align: center;">1</td><td>وجود علامة الجهاز يعمل على جميع الأجهزة الطبية</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">2</td><td>جميع الأجهزة الطبية تعمل</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">3</td><td>عربة الطوارئ مغلقة</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">4</td><td>وجود فحص يومي على عربة الطوارئ</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+            <tr><td style="text-align: center;">5</td><td>وجود علامة توضح تاريخ فتح الأدوية متعددة الاستخدام</td><td><div class="checkbox-box"></div></td><td><div class="checkbox-box"></div></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
   </div>
 
   <nav class="nav-nav">
     <button class="n-btn" onclick="go(-1)">→</button>
-    <div id="page" style="font-weight:bold; min-width:40px; text-align:center;">1 / 12</div>
+    <div id="page" style="font-weight:bold; min-width:40px; text-align:center;">1</div>
     <button class="n-btn" onclick="go(1)">←</button>
   </nav>
 
